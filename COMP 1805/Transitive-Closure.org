@@ -1,0 +1,36 @@
+* Recall that if we compose R with itself, then we get all elements (a,c) where (a,b) in R and (b,c) in R for some b.
+** This might have to be repeated many times.
+** When done, take the union of all of those compositions.
+*** This is equal to the transitive closure.
+* How many times do I need to repeat this?
+** The number of "intermediate" elements (i.e. in (a,x) (x,b), x) = |A| for R over the set A. (1)
+* Because of the above, the transitive closure of R over the set A is:
+** The union to infinity of R^i, which because of property (1) is the union to |A| of R^i
+* ex: R =        {(1,1), (1,3), (2,2), (3,1), (3,2)}
+** R^1 = R =     {(1,1), (1,3), (2,2), (3,1), (3,2)}
+** R^2 = RoR =   {(1,1), (1,2), (1,3), (2,2), (3,1), (3,2), (3,3)}
+** R^3 = RoRoR = {(1,1), (1,2), (1,3), (2,2), (3,1), (3,2), (3,3)}
+** R^2 = R^3, therefore we can stop!
+** We want to take R^1 U R^2 to get the transitive closure = {(1,1), (1,2), (1,3), (2,2), (3,1), (3,2), (3,3)}
+* Multiplication of matrices is weirdly similar to composition of relations.
+* Recall the table representation of a relation:
+* Given a matrix representation M_r of the relation R, and a matrix representation of M_s of the relation S,
+** The matrix representation of SoR is M_R JOIN M_S
+*** JOIN is equivalent to matrix multiplication, but non-zero entries are replaced with ones
+*** Take the previous example R = {(1,1), (1,3), (2,2), (3,1), (3,2)}
+| 1 | 0 | 1 |
+| 0 | 1 | 0 |
+| 1 | 1 | 0 |
+| 1 | 1 | 0 |
+
+M_(R^2) = | 1 | 0 | 1 |      | 1 | 0 | 1 |
+          | 0 | 1 | 0 | JOIN | 0 | 1 | 0 |               Note that each row of the multiplication is equal to the OR of the ANDs of the columns.
+          | 1 | 1 | 0 |      | 1 | 1 | 0 |
+
+          A   1   2   3
+        = 1 | 1 | 1 | 1 |
+          2 | 0 | 1 | 0 |
+          3 | 1 | 1 | 1 |
+M_(R^3) = M_R JOIN M_(R^2)
+
+At the end, take the union of the relations by computing the OR of the matrices.

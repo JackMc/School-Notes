@@ -1,0 +1,14 @@
+* Tooling at LiveQOS
+** Makes sure your network connection is good
+** Allows you to run checks on network connection  from all over the place to make sure that your users are getting acceptable connection
+** Agents (things that do the testing and generate the basic reports) written in Go
+** Logstash to send lines from logs to servers from agents
+*** Cluster of servers which receive data and put it into REDIS (logstash)
+**** If urgent, can call into Rails API for instant processing
+*** Rails processes data and puts them into elasticsearch
+** PSQL
+** Rails core sends a message to the Amazon queueing service to be pulled by the agents
+** Rails core renders the pages
+** Alerts
+*** So much data that it cannot be processed immediately
+*** Uses Sidekiq to do pulls/processing

@@ -1,0 +1,112 @@
+* Types of Relation
+** Equivalence Relation
+*** Ex. Consider the '=' relation: R : {(a,b) | a = b} over Z (integers)
+*** Why is '=' expressing equivalence?
+**** Reflexive: Anything is equal to itself
+**** Symmetrical: If a = b, b = a
+**** Anti-symmetrical: No, since two things can have the property that we use to indicate equivalence but can be different things
+**** Transitivity: Two things that are equal to the same thing are equal to each other
+***** i.e. If a = b and b = c, a = c
+*** Definition: We call a relation an equivalence relation iff it is reflexive, symmetric, and transitive.
+*** Examples:
+**** Logical equivalence
+**** Set equivalence
+**** ...
+*** To show that something is an equivalence relation, show that it has all of the properties (reflexive, symmetric, transitive)
+*** To show that something is not an equivalence relation, show that it is missing one of the properties (reflexive, symmetric, transitive)
+*** ex1. R = {(a, b) | a = b or a = -b} over Z
+**** Reflexive: Since a = b, a = a when a = b. Therefore (a,a) is in R. Therefore, R is reflexive.
+**** Symmetric: Direct proof.
+***** Assume that (a,b) in R
+***** Then a = b, or a = -b
+***** Proof by cases:
+****** Case 1: a = b
+******* Since a = b, b = a.
+******* Therefore (b,a) is in R.
+****** Case 2: a = -b
+******* We need to either show that b = a (obviously not true) or that b = -a
+******* Multiply both sides by -1. b = -a. Therefore (b, a) is in R.
+***** Therefore R is symmetric.
+**** Transitivity: Direct proof.
+***** Assume (a,b) is in R, and (b,c) is in R.
+***** We want to show that (a,c) is in R.
+***** If (a,b) is in R, then a = b, or a = -b
+***** If (b,c) is in R, then b = c or b = -c
+****** Case 1: a = b, b = c
+******* a = b = c, a = c. Therefore (a,c) is in R
+****** Case 2: a = b, b = -c
+******* a = b = -c, a = -c. Therefore (a,c) is in R.
+****** Case 3: a = -b, b = c
+******* -b = -c
+******* a = -b = -c
+******* a = -c. Therefore (a,c) is in R.
+****** Case 4: a = -b, b = -c
+******* -b = c
+******* a = -b = c
+******* a = c. Therefore (a,c) is in R.
+***** Therefore R is transitive.
+*** ex2. Is R = {(a,b) | m divides a - b} for some m in Z+ over Z.
+**** Reflexive: (a,a) in R
+*****                      <=> m divides a - a
+*****                      <=> m divides 0 (true)
+***** R is reflexive.
+**** Symmetric:
+***** Assume (a,b) in R. Want to show that m divides b - a ((b,a) in R).
+***** Since (a,b) in R, a - b = mk for some integer k.
+***** b - a = -mk (multiply by -1) for some integer -k.
+***** Since -k is an integer, m divides a - b.
+***** Therefore, (b,a) is in R. Therefore, R is symmetric.
+**** Transitive:
+***** Assume (a,b) in R, (b,a) in R. Want to get (a,c) in R.
+***** (a,b) in R <-> m divides a - b
+***** (b,c) in R <-> m divides b - c
+***** Therefore a - b = mk_1 (for some int k_1)
+*****           b - c = mk_2 (for some int k_2)
+***** Add them together!
+***** a - b + b - c = mk_1 + mk_2
+***** a - c = m(k_1 + k_2)
+***** Therefore (a,c) in R
+***** Therefore R is an equivalence relation
+*** ex3. Is the "divides" relation on the positive integers an equivalence relation?
+***             {(a,b) | a divides b}
+**** Reflexive: (a,a) in R because a divides a
+**** Transitive: Assume (a,b) and (b,c) in R. Get (a,c) in R.
+***** If a divides b, then b = k1a
+***** If b divides c, then c = k2b
+***** c = k_2b = k_2k_1a
+***** Therefore a divides c, and (a,c) in R.
+**** Symmetric: 1 does not divide 2, but 2 divides 1.
+*** ex4. Is R = {(a,b) | |a - b| < 1} over the reals an equivalence relation?
+**** Reflexive: |a - a| = 0 (less than one)
+**** Symmetric: Assume (a,b) in R
+*****           -> |a - b| < 1
+***** |b - a| = |a - b| < 1
+***** Therefore |b - a| < 1 <-> (a,c) in R.
+**** Transitive: No, take counterexample a = 1, b = 1.5, c = 2 (or (1,1.5) and (1.5, 2))
+***** If R were transitive, (1,1.5) and (1.5,2) being in the set would imply that (1,2) was in the set.
+***** |1 - 1.5| = |-0.5| = 0.5 < 1 <-> (1, 1.5) in R.
+***** |1.5 - 2| = |-0.5| = 0.5 < 1 <-> (1.5, 2) in R.
+***** |1 - 2| = |-1| = 1 which is not less than 1. Therefore (1,2) is not in R.
+** Equivalence classes
+*** Equivalence relations naturally partition the elements of the set over which they are defined into several classes
+**** i.e. for the relation, R, from students in COMP 1805 to their grades, the set is divided into the people who got As, the people who got Bs, etc.
+**** These sets are mutually exclusive (their intersection = {}), and unioning them will give you the entire set.
+**** R is an eqv relation!
+**** R partitions the students into different sets:
+**** The set of all elements b in A related by R to a in A is the equivalence class of a, denoted [a]_R
+**** Notation: [a]_R = {b | (a,b) in R}
+**** If b in [a]_R then b is a representive of the equivalence class
+**** ex. R = {(a,b) | a = b or a = -b} over Z
+**** An integer is "equivalent" to itself and its negative
+***** [a]_R = {a, -a}
+***** [1]_R = {1, -1}
+**** ex2. R = {(a,b) | a and b have the same first letter} over the set of English words.
+***** This is an equivalence relation.
+***** The equivalence classes of R are (assuming case-insensitivity):
+****** The set of all words in English starting with A.
+****** The set of all words in English starting with B.
+****** The set of all words in English starting with C.
+****** ...
+***** If you give me a partition of a set, then we can define a relation with that partition as its equivalence classes
+****** ex3. A = {1,2,3,4,5,6}: A_1 = {1} A_2 = {2,3} A_3 = {4,5,6} Define an equivalence relation R on A with equivalence classes A_1, A_2, A_3
+******* DO THIS LATER (ASK SOMEONE ELSE)

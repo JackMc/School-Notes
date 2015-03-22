@@ -1,0 +1,75 @@
+* Partial Orders
+** A relation R on a set A is called a partial order (or partial ordering) if it is
+*** 1. Reflexive
+*** 2. Antisymmetric
+*** 3. Transitive
+** A set A together with a partial order R on A is called a partially ordered set (poset) and it is denoted (A,R).
+*** Members of A are called elements of the poset.
+** ex1. The >= relation on Z is a partial order.
+*** Reflexive a >= a for all a in Z
+*** Antisymmetric: Assume a >= b, and b >= a. a has to be equal to b.
+*** Transitive: Assume a >= b and b >= c.
+**** a >= b >= c
+**** a >= c
+*** We have now proved that this is a partial order.
+** ex2. The < relation is not a partial order.
+*** It isn't reflexive. ex. (1,1) is not in the < relation (1 < 1 is false)
+** ex3. "divides" on Z+ (last class we proved this was not symmetric, but was reflexive and transitive)
+*** Is it antisymmetric?
+**** Yes, assume a divides b and b divides a.
+**** b = k_1a and a = k_2b. b = k_1a = k_1(k_2b)
+**** b = k_1(k_2b) (since b and b are positive integers, they don't impact the sign)
+**** 1 = k_1k_2
+**** k_1 and k_2 have to be 1 to both be positive integers and equal 1
+**** k_1 = k_2 = 1 (this means that it's antisymmetric!)
+** In a partial order, we cannot always compare two elements:
+*** The elements a,b are comparable if (a,b) in R OR (b,a) in R
+**** 1 <= 3 OR 3 <= 1 BUT 3 != 1
+*** When neither (a,b) in R nor (b,a) in R, we say that a and b are incomparable
+*** For example in the divides relation: 5 does not divide 7, 7 does not divide five
+**** 5 and 7 are incomparable!
+*** 2 divides 4
+**** 2 and 4 are comparable!
+*** If all pairs of elements are comparable, the relation is a total order (chain) and the set is linearly ordered (totally ordered)
+** Representing partial orders
+*** Let's talk more about the graphical representation (Hasse diagrams)
+*** ex. The < relation on {1,2,3,4}
+**** Draw this on paper! It looks terrible if you just stick them all together (see 2015-03-19 16.44.35)
+**** To simplify, try not drawing the reflexive loops (things connected to themselves) (see 2015-03-19 16.46.19)
+**** Simplify further by using the transitive property (remove connections from an (a,b) to a (b,c)) (take screenshot)
+**** Simplify again by removing the actual lines and saying they always point up (see 2015-03-19 16.49.57)
+*** ex2. "divides" over {1,2,3,4,6,8,12}
+**** Start with the thing that has the most connections (in this case 1) (see 2015-03-19 16.53.41)
+*** ex3. Improper subset over the power set of {a,b,c}
+**** {{}, {a}, {b}, {c}, {a,b}, {b,c}, {a,c}, {a,b,c}}
+**** Empty set goes at the bottom because everything is a subset of everything
+**** There is a concept of "prettiness" when it comes to Hasse diagrams.
+*** One benefit of Hasse diagrams is that it is easier to pick out certain "special" elements
+**** An element a is maximal in a poset A with partial order R if
+***** There is no b in A such that R(a,b) <=> a ≼ b and a != b (a ≼ b) (use fancy cursive <)
+**** An element a is minimal in a poset A with order < if
+***** There is no b in A such that b < a
+**** Hasse diagrams make it wayyy easier to find these elements.
+***** In a Hasse diagram, maximal elements have no edges heading up and minimal edges have nothing heading down
+***** The maximal element has nothing leaving it from the top
+***** and the minimal element has nothing coming towards it from the bottom
+**** ex. In the divides example, 8 and 12 are maximal, 1 is minimal
+**** In "powerset" example above: {a,b,c} is maximal, and the empty set is minimal
+*** Sometimes there is an element that is larger than all other elements: this is called the greatest element:
+**** b ≼ a for all b in A (therefore a is the greatest element)
+**** Similarly, there may be an element that is smaller than all other elements: this is called the least element
+***** b ≽ a for all b in A (therefore b is the least element)
+**** Both greatest and least elements are unique when they exist
+*** You might want to bound a subset of the poset:
+**** Given a poset S with partial order ≼ and a subset A of S, if a in S and a ≼ u, for all a in A, then u is an upper bound of a.
+**** If l in S and l ≼ a for all a in A, then l is a lower bound of A
+**** ex. Diagram from 2015-03-19 17.16.40  
+**** (upper bounds of {a,b,c}) = {e,f,h,j}
+***** Highlight the subset we're interested in going in the direction they lead (diagram from 2015-03-19 17.18.49)
+**** (lower bounds of {a,b,c}) = {a}
+**** (upper bounds of {h,j}) = {}
+**** (lower bounds of {h,j}) = {a,c,e,f,d,b}
+**** (upper bounds of {a,c,d,f}) = {j,h,f}
+**** (lower bounds of {a,c,d,f}) = {a}
+*** If a ≼ x for any x in A and x ≼ Z for any upper bound Z of A_1 then a is the least upper bound of A
+*** If y is a lower bound of A and Z ≼ y for any Z vs a lowerbound of A, then y is the greatest lower bound of A.

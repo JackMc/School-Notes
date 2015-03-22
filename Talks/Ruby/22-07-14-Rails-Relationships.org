@@ -1,0 +1,33 @@
+* Rails Relationships
+** TODO Grab talk from ottawaruby website... Didn't catch all the examples.
+** A quick overview
+** belongs_to
+*** Easy way to outsource to another table by foreign ID
+*** A heirarchy
+** has_many
+*** One object has many of another type of object (model)
+** has_one
+*** Never completely equal
+**** One typically holds information about the relationship between the two records
+** has_many :through
+*** Most typical way to deal with many to many relationships
+*** The JOIN table has it's own model (WTF does that mean) (Google what a JOIN table/model is in Rails)
+** has_one :through
+*** Not really used
+*** DOn't forget your join table
+** has_and_belongs_to_many
+*** Simplest many to many in rails
+*** Very simple many-to-many
+*** Quick and dirty JOIN relationship
+*** Not recommended
+** Polymorphic Associations
+*** Subtle types of associations exist
+**** Accounts has one Person as Customable
+**** Accounts has one Corporation as Customable
+*** Inheritance/polymorphism for Models?
+** Self join
+*** Employee has many subordinates
+*** Employee belongs to manager
+*** Foreign key: manager_id
+** Bi-Directional Associations
+*** Allows you to easy inverse relationships from other models

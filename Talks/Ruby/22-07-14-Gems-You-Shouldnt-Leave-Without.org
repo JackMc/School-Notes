@@ -1,0 +1,67 @@
+* Development
+** QUIET_LOGS
+** BETTER_ERRORS
+*** Web interface for all the frames and errors in your app with formatting for the traces
+** PRY + PRY-DEBUGGER
+*** Pry is a nicer irb
+*** Pry-debugger is like pdb for Pry
+* Production
+** Environment management
+*** Use SSL certificates!
+*** Watch talk from last month (June)
+*** Figaro
+**** https://github.com/laserlemon/figaro
+**** Can create a file config/application.yaml which is a custom application configuration file. 
+***** Not checked into version control!! Generally contains keys for APIs.
+****** Access via Figaro.env.pusher_key
+***** Allows you to specify different keys for production/development/testing
+**** Dotenv is a similar Ruby configuration tools, but it doesn't require Rails and stores in a file .env in the main directory of the Ruby app.
+***** https://github.com/bkeepers/dotenv
+** Error reporting
+*** Exception_notification
+**** A piece of middleware which will e-mail you if you get an exception in production!
+***** Simple config file!
+**** Integrates with a bunch of team chats
+***** Can configure to send to pretty much anything. Pluggable.
+*** http://rubytoolbox.com has a bunch of (for-pay and not-for-pay) exception notification services
+**** There are tons...
+** Application servers
+*** Development servers
+**** Rails application server runs under Rack (WEBrick)
+**** Thin (lightweight event-based server, single threaded)
+*** Production ready webservers
+**** Thin (lightweight event-based server, single threaded) ???
+**** Unicorn (multi-threaded, routes and load-balances to various instances of application)
+***** Works well on Heroku
+**** Passenger (very simple server. Handles everything!!)
+**** Puma (event-based webserver, faster than Thin)
+*** Don't use WEBrick in production.
+*** Use Unicorn unless you have a reason not to.
+** These are all things that you don't think about during development!
+** They're very useful in production, though! Better safe than sorry. :-)
+** Middleware
+*** Protocol called Rack runs RoR
+*** Does something to every incoming request to your application
+*** "Before" filters are the built-in way to do it(Google it!)
+*** Rack-Canonical-Host
+**** Redirect all requests to a specific host. Can also be used to force SSL. Great for custom domains on Heroku.
+**** https://github.com/tylerhunt/rack-canonical-host
+*** Rack-Attack
+**** Connection whitelists, blacklists, and throttling. Stops misbehaving clients from even hitting your app code.
+**** Allows you to quickly ditch requests
+*** Rack-Google-Analytics
+**** Injection of JavaScript into all of your pages.
+*** Heroku
+**** Injects a gem which tells Rail to serve assets
+***** Point at the public assets folder and it serves them
+***** Gemfile:
+      ruby '2.0'
+      gem 'rails_12factor'
+***** rails_12factor gem makes sure rails behaves to the Heroku '12 factors' for a well-behaved web application.
+***** Going to miss stuff from 2.1 if you don't put ruby '2.0'
+** Other useful gems
+*** https://github.com/capistrano
+*** https://codeclimate.com/
+**** Quality, style, and security (paid service, point it to your GitHub)
+*** https://github.com/presidentbeef/brakeman
+**** Mointors your app for recent Rails vulns
