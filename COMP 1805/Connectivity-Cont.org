@@ -1,0 +1,7 @@
+* Connectivity pt. 2 (see Graphs-Cont for the orig)
+** We can also talk about connectivity in directed graphs
+*** A directed graph is "strongly connected" if there is a path from a to be (and thus b to a) for every pair of vertices a and b.
+*** A directed graph is "weakly connected" if the graph is connected when the directions of the edges are ignored
+**** The graph with all of the directions on the edges removed is called the "underlying undirected graph"
+*** If you change the directions in a graph, it doesn't change the weak connected-ness of the graph
+**** But it may change the strong connected-ness.

@@ -1,0 +1,61 @@
+* Graphs
+** A graph is a pair of set (V,E)
+*** V is called the vertex set
+*** E is called the edge set
+*** Each edge in E describes how vertices in V are connected
+** Example: See 2015-03-24 16.32.33. Assume that the black lines are edges and the black dots vertices.
+*** This is a simple graph
+**** No edge connects a vertex to itself
+**** Because there's only one edge between any two vertices
+*** In this graph, edges don't have a direction (this is not required)
+**** This property is called being "undirected".
+**** If there are directions, it is directed.
+*** In an undirected graph, edges can be represented as a set containing two vertices
+*** How to represent the above graph:
+**** V = {San Francisco, Denver, Chicago, New York, Washington, Los Angeles}
+**** E = {{San Francisco, Denver}, {San Francisco, Los Angeles}, {Los Angeles, Denver}, {Denver, Chicago}, {Chicago, Detroit}, {Chicago, Washingston}, {Chicago, New York}, {Detroit, New York}, {New York, Washington}}
+** Sometimes you want to allow multiple edges between vertices. This is called a multigraph.
+*** We could represent this by recording an edge with it's "multiplicity" (i.e. how many paths there are between two sets, {Denver, Chicago, 3})
+**** OR with labelling each edge.
+** We might want to relax the restriction that there are no edges from a vertex to itself
+*** Those edges are called self-loops
+*** Graphs that have self-loops are called pseudo-graphs.
+** All the above have an equivalent "directed" version
+| Type                | Edge       | Multiple Edges | Self Loops |
+| Simple              | Undirected | no             | no         |
+| Multigraph          | Undirected | yes            | yes        |
+| Pseudograph         | Undirected | yes            | yes        |
+| Simple Directed     | Directed   | no             | no         |
+| Directed Multigraph | Directed   | Yes            | Yes        |
+** There are many applications of graphs:
+*** 1. Social Networks
+**** Facebook is a simple graph.
+*** 2. Hollywood Graph
+**** There is an edge between two actors if they've ever acted in a movie together
+**** This is a multigraph if you want to say what the movie was, or a simple graph otherwise
+*** 3. Collaboration Graph
+**** There is a connection between two profs. if they've collaborated on a paper
+*** 4. Call Graph
+**** A graph between functions and the functions that they call
+***** Directed Multigraph (because directed multigraphs allow self-loops) between two functions
+**** Literal graph of calls. Connection between two phones if the two phones are calling each other
+*** 5. Web Graph
+**** Webpages linking to each other.
+** Representing Graphs
+*** We already saw a bad way of doing this
+**** Listing all the things in a set and then all of the edges in a set
+***** This is very inefficient on a computer and in real life without a diagram!
+*** This is common in data structures
+*** You want to use a representation that is suited to your common operation (in this case asking if two things are related)
+*** There are lots of ways to represent graphs
+**** 1. Adjacency list
+***** For each vertex, list the vertices that are connected to it by an edge
+****** Such vertices are said to be adjacent
+***** This works for both directed and undirected lists!
+***** Example:
+***** a: b,c,e
+***** b: a
+***** c: a,e,d
+***** d: c,e
+***** e: a,c,d
+***** This only requires us to check the attached nodes to a given node

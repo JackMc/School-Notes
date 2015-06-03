@@ -1,0 +1,53 @@
+* Adjacency and Degree
+** Let A = (V,E)
+** Two vertices are adjacent (are neighbours) in A if u and v are both endpoints of some edge in E
+** If an edge e connects vertices u and v, then e is incident on u (and v)
+** The degree of a vertex in an undirected graph is the number of edges incident to it, denoted with deg(v)
+*** This implies that self-loops in a graph are counted twice (since it is incident on itself twice)
+*** Take graph /home/jack/Pictures/Screenshot from 2015-03-27 12:55:43.png
+**** deg(a) = 3, deg(b) = 3, deg(c) = 4, deg(d) = 4, deg(e) = 6, deg(f) = 0
+**** Note that if you sum up all the degrees in a graph (3 + 3 + 4 + 4 + 6 + 0 = 20), you get twice the number of edges in the graph!
+**** This result is called the "Hankshaking Theorem": If G = (V,E) is a graph, then sum_vinV(deg(v)) = 2|E|
+** So what if we want to do this kind of thing with directed graphs?
+*** For a directed edge (u,v) u----->v, u is the initial vertex, and v is the terminal or end vertex
+*** The number of incoming edges to v (i.e. the number of edges where v is a terminal vertex) is called the in degree. This is denoted by deg-(v)
+*** The number of incoming edges to u (i.e. the number of edges where u is a terminal vertex) is called the out degree. This is denoted by deg+(v)
+*** Note that the sum of all of the indegrees (deg-) is equal to the sum of all of the outdegrees (deg+).
+**** Which is equal to the number of vertices
+** Some special graphs:
+*** There are a few types of graphs with special names:
+**** The complete graph on n vertices (called K_n):
+***** n vertices where each is corrected to all others.
+***** You know a graph is a "complete graph" when you can't add any more edge without it becoming a multigraph.
+**** The "cycle" on n >= 3 vertices, denoted C_n
+***** Vertices: {v_1, v_2, v_3, v_4, v_5, ..., v_n}
+***** Edges: {v1, v2}, {v2, v3}, {v3, v4}, {v4, v5}, ..., {vn, v1}
+***** So it makes a cycle!
+***** Note that C_3 = K_3.
+***** Also note that C_n is a polygon with n sides!
+**** The wheel on n >= 3: W_n
+***** Take C_n, add one vertex that is connected to all others.
+**** Bipartite graph G = (V,E) is a graph such that V can be partitioned into V1 and V2 with V1 INTERSECT V2 = {} and V1 UNION V2 = V Every edge in E has one endpoint in V1 and one endpoint in V2.
+**** The complete bipartite graph K_m,n has partitions of size m and n and every element in one partition is connected to every element in the other
+* Subgraphs
+** A subgraph of a graph G = (V,E) is a graph H = (W,F) such that W is a subset of V and F is a subset of F
+*** A proper subgraph has the additional property that H != G
+** A subgraph is spanned if it contains all of the vertices of the original graph (W = V)
+* Connectivity/Paths
+** Sometimes we want to know if two verties in a graph are connected by a sequence of edges.
+*** e.x. is there a route from one computer to another computer in a graph of computers (i.e. a network)
+** A path is a sequence of edges that begins at a vertex and travels from vertex to vertex along edges of the graph
+*** More formally, a path of length n >= 0 from a vertex to a vertex u to a vertex v in G = (V,E) is a sequence of n edges: e1,e2,e3,...,en
+**** s.t. e1 = {u, x1}, e2 = {x1, x2}, e3 = {x2,x3}, en = {x_n-1, v} e_n in E and x_n in V
+** If a graph is simple, then we can just use the vertex sequence to label the path.
+** A path is a circuit (cycle) if u and v are the same thing (i.e. there's some path back to u from u)
+** The path passes through all of those vertices (x_1, x_2, ... x_n)
+** The path traverses e_1, e_2, ..., e_n
+** A path is simple of it does not traverse an edge more than once
+*** Usually we are interested in simple paths.
+** A path's length is the number of edges on the path.
+*** Note: The number of nodes is not the length. 
+** An undirected graph is connected if there is at least one path between every two distinct vertices in the graph
+** Two different parts of a graph that are maximally connected are called the connected components
+** A special type of connected (sub)graph is called a tree:
+*** FINISH THIS!!!! GO WATCH THE LECTURE VIDEO. IT GOES HERE.

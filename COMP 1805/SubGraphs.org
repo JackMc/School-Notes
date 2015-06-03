@@ -1,0 +1,6 @@
+* Subgraphs
+** A subgraph of a graph G = (V,E) is a graph H = (W,F) such that W is a subset of V and F is a subset of F
+*** A proper subgraph has the additional property that H != G
+** A subgraph is spanned if it contains all of the vertices of the original graph (W = V)
+** Connectivity
+*** 

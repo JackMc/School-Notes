@@ -1,0 +1,15 @@
+* Planarity
+** Let's say we want to know if a vertex u is connected to vertex v
+*** Easy to do. See if it's adjacent!
+** We like it when edges don't cross, cause it makes pictures prettier
+** Sometimes, it is easy to get confused about a graph when looking at a picture of it because many of the edges cross 
+*** Difficult to determine which edge goes where
+** It's nicer to look at graphs where the edges *do not* cross.
+** ex: k_4 looks like a square with a cross in the middle if you draw it intuitively.
+*** This is not "pretty" because the edges cross in the middle.
+** There are multiple ways of drawing the same graph
+*** We like the drawing that has no crossings in it
+** A graph is planar if it can be drawn without edge crossings
+*** This doesn't mean that it *is* drawn without edge crossings, this is called a planar representation
+** Not all graphs are planar!
+*** k_3,3 is not planar

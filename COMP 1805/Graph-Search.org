@@ -1,0 +1,46 @@
+* Graph Search Algorithms
+** Suppose we're trying to explore a graph.
+*** See what computers are connected to a network
+*** Visit different cities connected by flights
+*** ...
+** We need to keep track of where we've been so we don't sit in a cycle
+** How do you explore a graph in an orderly way?
+*** Orderly meaning that we visit each node exactly once
+** Example: Depth First Search (DFS)
+*** 1. Mark all vertices are "unvisited".
+*** 2. Start at an arbitrary vertex.
+*** 3. Go to an unvisited neighbour.
+*** 4. Go to 2.
+*** 5. Repeat until all unvisited neighbours have been visited.
+*** 6. Go back.
+*** Note that in a DFS the edges form a spanning tree.
+**** Spanning means all vertices are visited
+**** It's a tree because there are no loops (b.c. we never re-visit a node), and it is connected.
+**** Spanning trees are really useful in graph algorithms
+***** They don't have very many edges
+****** Property: A tree on n items has n-1 edges
+****** This means that, regardless of how many edges there are in the original tree, there will always be n-1 on the DFS spanning tree
+*** DFS has MANY applications
+**** Finding paths between vertices
+**** Detecting circuits or cycles
+**** Find connected components
+***** Start a DFS on each node.
+**** Find cut vertices
+**** AI applications
+***** Game states (edge if you can move between states in a single move)
+***** Start at the initial state of the game and try and find a winning state
+***** https://webdocs.cs.ualberta.ca/~chinook/project/
+*** How would you analyze DFS?
+**** You could traverse every edge twice (this is 2n) once for backtrack and once for going back
+***** Therefore it's O(n) where n is the number of edges
+** Breadth first search (BFS)
+*** Instead of always going as deep as possible (as in DFS) we could try to explore gradually at increasing distances from the starting vertex.
+*** This is known as a breadth first search.
+*** Algorithm:
+**** 1. Keep a list of vertices seen so far
+***** Initially, it contains an arbitrary vertex.
+**** 2. Add all adjacent vertices to the end of the list
+**** 3. Take the first vertex off the list and visit it
+**** 4. Add all of it's unvisited neighbours to the end of the list.
+**** 5. Repeat 3, 4 until the list is empty.
+*** This uses a queue.
